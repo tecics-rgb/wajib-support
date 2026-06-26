@@ -30,8 +30,8 @@ const limiter = rateLimit({
 // Email transporter — uses your Google Workspace account via SMTP
 const transporter = nodemailer.createTransport({
   host: "smtp.gmail.com",
-  port: 465,
-  secure: true,
+  port: 587,
+  secure: false, // use STARTTLS on 587 (works on Render; 465 is blocked)
   auth: {
     user: process.env.SMTP_USER, // info@wajib.ai
     pass: process.env.SMTP_APP_PASSWORD // Google App Password (16 chars)
