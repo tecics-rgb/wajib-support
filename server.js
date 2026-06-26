@@ -12,10 +12,10 @@ app.set("trust proxy", 1); // needed on Render so rate limiting reads the real I
 // Parse JSON request bodies
 app.use(express.json({ limit: "10kb" }));
 
-// Only allow requests coming from your website
+// Allow requests from your website (with or without www)
 app.use(
   cors({
-    origin: ["https://wajib.ai", "https://www.wajib.ai"],
+    origin: true, // reflects the request origin — avoids www/non-www mismatch
     methods: ["POST"]
   })
 );
